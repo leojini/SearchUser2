@@ -1,3 +1,5 @@
+![image](https://github.com/user-attachments/assets/270e24bc-921e-4f96-aa59-76d7035a5930)
+
 # Clean Swift(VIP 아키텍처)
 ViewController, Interactor, Presenter 각 요소는 서로에게 입력과 출력이 된다.
 
@@ -42,7 +44,7 @@ APIPresenter에서 받은 결과를 UI 데이터로 가공한 후 넘겨주기 �
 - Workers: 비즈니스 로직 인터페이스
 
 
-![image](https://github.com/user-attachments/assets/270e24bc-921e-4f96-aa59-76d7035a5930)
+
 
 ![image](https://github.com/user-attachments/assets/b7e408ff-5866-4ef8-843c-3ba544ffb7f7)
 
