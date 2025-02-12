@@ -43,7 +43,12 @@ APIPresenter에서 받은 결과를 UI 데이터로 가공한 후 넘겨주기 �
 - Services: 비즈니스 로직 로직 구현
 - Workers: 비즈니스 로직 인터페이스
 
-
+[사용한 외부 패키지]
+- Moya
+- Kingfisher
+- RxSwift
+- Realm
+- SnapKit
 
 
 ![image](https://github.com/user-attachments/assets/b7e408ff-5866-4ef8-843c-3ba544ffb7f7)
