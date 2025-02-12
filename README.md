@@ -1,4 +1,4 @@
-- Clean Swift(VIP 아키텍처)
+# Clean Swift(VIP 아키텍처)
 : ViewController, Interactor, Presenter 각 요소는 서로에게 입력과 출력이 된다.
 
   아래는 각 요소들이 수행되어지는 순서이다.
