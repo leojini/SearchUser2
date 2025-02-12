@@ -18,16 +18,16 @@ APIViewController에서 APIInteractor로 비즈니스 요청을 하기 위한 �
 APIInteractor에서 비즈니스 로직을 수행한 후 APIPresenter에 해당 결과를 넘겨주기 위한 프로토콜을 APIPresenterLogic로 정의되어 있다.
 APIPresenter에서 받은 결과를 UI 데이터로 가공한 후 넘겨주기 위한 프로토콜을 APIDisplayLogic로 정의되어 있다.
 
-위의 내용을 종합해보면 아래와 같은 표와 같다.
+위의 내용을 종합해보면 아래와 같다.
 
 - APIViewController  
-	: APIBusinessLogic 프로토콜
+	: APIBusinessLogic 프로토콜로 출력
 
 - APIInteractor
-	: APIPresenterLogic 프로토콜
+	: APIPresenterLogic 프로토콜로 출력
 
 - APIPresenter
-	: APIDisplayLogic 프로토콜
+	: APIDisplayLogic 프로토콜로 출력
 
 
 폴더구조
