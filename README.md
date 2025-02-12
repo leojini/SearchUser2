@@ -15,7 +15,9 @@ ViewController, Interactor, Presenter 각 요소는 서로에게 입력과 출�
 그렇다면 핵심 요소는 각각의 입력, 출력을 프로토콜로 구현한 부분인데 해당 부분에 대해서 상세히 들여다보자.
 
 APIViewController에서 APIInteractor로 비즈니스 요청을 하기 위한 프로토콜을 APIBusinessLogic로 정의되어 있다.
+
 APIInteractor에서 비즈니스 로직을 수행한 후 APIPresenter에 해당 결과를 넘겨주기 위한 프로토콜을 APIPresenterLogic로 정의되어 있다.
+
 APIPresenter에서 받은 결과를 UI 데이터로 가공한 후 넘겨주기 위한 프로토콜을 APIDisplayLogic로 정의되어 있다.
 
 위의 내용을 종합해보면 아래와 같다.
