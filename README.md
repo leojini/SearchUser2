@@ -1,6 +1,8 @@
 - Clean Swift(VIP 아키텍처)
 : ViewController, Interactor, Presenter 각 요소는 서로에게 입력과 출력이 된다.
+
   아래는 각 요소들이 수행되어지는 순서이다.
+  
 1. ViewController는 사용자 이벤트를 받아서 Interactor에게 비즈니스 로직을 요청한다.
 2. Interactor는 비즈니스 로직(서버 API, 로컬 데이터 검색 등)을 수행 후 결과를 Presenter에 넘겨준다.
 3. Presenter는 받은 결과를 UI에 필요한 데이터로 가공 후 ViewController에 넘겨준다.
