@@ -20,14 +20,11 @@ APIPresenter에서 받은 결과를 UI 데이터로 가공한 후 넘겨주기 �
 
 위의 내용을 종합해보면 아래와 같다.
 
-- APIViewController  
-	: APIBusinessLogic 프로토콜로 출력
+- APIViewController: APIBusinessLogic 프로토콜로 출력
 
-- APIInteractor
-	: APIPresenterLogic 프로토콜로 출력
+- APIInteractor: APIPresenterLogic 프로토콜로 출력
 
-- APIPresenter
-	: APIDisplayLogic 프로토콜로 출력
+- APIPresenter: APIDisplayLogic 프로토콜로 출력
 
 [기타]
 - Router: 다른 ViewController로의 전환 및 전환시 넘겨줄 데이터를 처리한다.
