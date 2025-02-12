@@ -40,14 +40,11 @@ APIPresenter에서 받은 결과를 UI 데이터로 가공한 후 넘겨주기 �
 - Workers: 비즈니스 로직 인터페이스
 
 
+![image](https://github.com/user-attachments/assets/270e24bc-921e-4f96-aa59-76d7035a5930)
 
-![image](https://github.com/user-attachments/assets/a0bc10ce-01d2-40c7-bc70-f1296d004ca8)
+![image](https://github.com/user-attachments/assets/b7e408ff-5866-4ef8-843c-3ba544ffb7f7)
 
-
-![image](https://github.com/user-attachments/assets/8fb07b54-a72d-4869-83c0-878ba5a112c7)
-
-
-![image](https://github.com/user-attachments/assets/e5c8f586-e19e-4704-947a-3454cf2f945e)
+![image](https://github.com/user-attachments/assets/690daa7f-4658-4da1-927e-606a64e620be)
 
 
 
