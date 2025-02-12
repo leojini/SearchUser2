@@ -32,11 +32,25 @@ APIPresenter에서 받은 결과를 UI 데이터로 가공한 후 넘겨주기 �
 - Service: Interactor의 비즈니스 로직 수행을 위한 인터페이스를 구현한다.
 
 
-
-
 [폴더구조]
 - Models: 서버 API, 로컬 데이터(Realm)의 모델 정의
 - Resources: Assets, Stroyboard 파일 등 리소스
 - Scenes: 각 화면별 Interactor, UI Model, Presenter, ViewController, Router 정의
 - Services: 비즈니스 로직 로직 구현
 - Workers: 비즈니스 로직 인터페이스
+
+
+
+![image](https://github.com/user-attachments/assets/a0bc10ce-01d2-40c7-bc70-f1296d004ca8)
+
+
+![image](https://github.com/user-attachments/assets/8fb07b54-a72d-4869-83c0-878ba5a112c7)
+
+
+![image](https://github.com/user-attachments/assets/e5c8f586-e19e-4704-947a-3454cf2f945e)
+
+
+
+
+
+
