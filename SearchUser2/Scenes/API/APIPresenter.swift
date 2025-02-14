@@ -26,13 +26,14 @@ class APIPresenter: APIPresenterLogic, APIPresenterData {
             let items = data.items
             let viewDatas = items.map {
                 // 뷰 데이터를 구성한다.
-                let itemData = $0.getData()
+                let id = "\($0.id)"
+                let name = $0.login
                 let localWorker = LocalWorker(localStore: LocalStore())
-                let isFavorite = localWorker.isFavorite(itemData.id, name: itemData.name)
+                let isFavorite = localWorker.isFavorite(id, name: name)
                 
-                return API.FetchUsers.ViewModel.APIViewData(id: itemData.id,
-                                                            name: itemData.name,
-                                                            profileUrl: itemData.avatarUrl,
+                return API.FetchUsers.ViewModel.APIViewData(id: id,
+                                                            name: name,
+                                                            profileUrl: $0.avatar_url,
                                                             favorite: isFavorite)
             }
             
@@ -42,11 +43,11 @@ class APIPresenter: APIPresenterLogic, APIPresenterData {
                 var oriViewDatas = self.datas
                 oriViewDatas.append(contentsOf: viewDatas)
                 self.datas = oriViewDatas
-                viewController?.displayFetchUsers(viewModel: API.FetchUsers.ViewModel(totalCount: data.getTotalCount(), datas: oriViewDatas, errorMessage: ""))
+                viewController?.displayFetchUsers(viewModel: API.FetchUsers.ViewModel(totalCount: data.total_count, datas: oriViewDatas, errorMessage: ""))
             } else {
                 // 첫 번째 페이지를 요청한 경우
                 self.datas = viewDatas
-                viewController?.displayFetchUsers(viewModel: API.FetchUsers.ViewModel(totalCount: data.getTotalCount(), datas: viewDatas, errorMessage: ""))
+                viewController?.displayFetchUsers(viewModel: API.FetchUsers.ViewModel(totalCount: data.total_count, datas: viewDatas, errorMessage: ""))
             }
         } else {
             viewController?.displayFetchUsers(viewModel: API.FetchUsers.ViewModel(totalCount: 0, datas: [], errorMessage: response.errorMessage))
@@ -69,7 +70,7 @@ class APIPresenter: APIPresenterLogic, APIPresenterData {
         }
         self.datas = viewDatas
         
-        viewController?.displayFetchUsers(viewModel: API.FetchUsers.ViewModel(totalCount: data.getTotalCount(), datas: viewDatas, errorMessage: ""))
+        viewController?.displayFetchUsers(viewModel: API.FetchUsers.ViewModel(totalCount: data.total_count, datas: viewDatas, errorMessage: ""))
     }
     
     func presentAddFavorite(response: API.AddFavorite.Response) {

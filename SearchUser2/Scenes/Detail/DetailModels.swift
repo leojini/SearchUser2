@@ -7,12 +7,14 @@
 
 enum Detail {
     // MARK: Use cases
-    enum APIDetail {
+    enum Info {
         struct Request {}
         struct Response {}
         struct ViewModel {
-            var name: String
-            var profileUrlString: String
+            let id: String // 아이디
+            let name: String // 이름
+            let profileUrl: String // 프로필 이미지 url
+            var favorite: Bool
         }
     }
 }

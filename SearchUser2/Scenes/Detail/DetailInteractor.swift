@@ -11,15 +11,12 @@ protocol DetailBusinessLogic {
 }
 
 protocol DetailDataStore {
-    var item: API.FetchUsers.ViewModel.APIViewData? { get set }
+    var item: Detail.Info.ViewModel? { get set }
 }
 
 class DetailInteractor: DetailBusinessLogic, DetailDataStore {
-    //private let disposeBag = DisposeBag()
     var presenter: DetailPresenterLogic?
-    //var searchWorker = SearchAPIWorker(searchStore: SearchAPIStore())
-    //var isFetching: Bool = false
-    var item: API.FetchUsers.ViewModel.APIViewData?
+    var item: Detail.Info.ViewModel?
     
     /// 로컬 데이터 추가한 후 presenter에 응답을 넘겨준다.
     ///

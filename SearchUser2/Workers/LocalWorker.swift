@@ -5,8 +5,7 @@
 //  Created by Leojin on 1/22/25.
 //
 
-protocol LocalStoreProtocol
-{
+protocol LocalStoreProtocol {
     func addLocalData(_ id: String, name: String, avatarUrl: String)
     func removeLocalData(_ id: String, name: String)
     func selectDatas(_ name: String) -> [FavoriteData]

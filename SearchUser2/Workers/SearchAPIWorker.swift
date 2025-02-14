@@ -5,12 +5,10 @@
 //  Created by Leojin on 1/22/25.
 //
 
-import Moya
 import RxSwift
 
-protocol SearchAPIStoreProtocol
-{
-    func searchUsers<T: Decodable>(request: SearchUserRequest, type: T.Type) -> Single<T>
+protocol SearchAPIStoreProtocol {
+    func searchUsers<T: Decodable>(request: SearchUserRequest, type: T.Type) async throws -> T?
 }
 
 class SearchAPIWorker {
@@ -20,7 +18,7 @@ class SearchAPIWorker {
         self.searchStore = searchStore
     }
     
-    func fetchUsers<T: Decodable>(request: SearchUserRequest, type: T.Type) -> Single<T> {
-        return searchStore.searchUsers(request: request, type: T.self)
+    func fetchUsers<T: Decodable>(request: SearchUserRequest, type: T.Type) async throws -> T? {
+        return try await searchStore.searchUsers(request: request, type: T.self)
     }
 }

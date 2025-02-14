@@ -15,23 +15,12 @@ protocol DetailDisplayLogic: AnyObject {
 
 class DetailViewController: BaseViewController, DetailDisplayLogic {
     
-    //var router: DetailRoutingLogic?
-    //var router: (NSObjectProtocol & ShowOrderRoutingLogic & ShowOrderDataPassing)?
     var interactor: DetailBusinessLogic?
     var router: (DetailRoutingLogic & DetailDataPassing)?
     
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var descLabel: UILabel!
     @IBOutlet weak var favImageView: UIImageView!
-    
-//    override func viewDidLoad() {
-//        super.viewDidLoad()
-//        
-//        setup()
-//        initUI()
-//    }
-    
-    // MARK: Object lifecycle
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
@@ -63,22 +52,26 @@ class DetailViewController: BaseViewController, DetailDisplayLogic {
     }
     
     private func initUI() {
+        guard let item = router?.dataStore?.item else { return }
         
-        if let item = router?.dataStore?.item {
-            imageView.kf.setImage(with: URL(string: item.profileUrl),
-                                         placeholder: nil,
-                                         options: [.transition(.fade(0.5))],
-                                         progressBlock: nil)
-            descLabel.text = "\(item.name)"
-            favImageView.image = UIImage(resource: (item.favorite) ? .starBlue : .star)
-        }
+        imageView.kf.setImage(with: URL(string: item.profileUrl),
+                                     placeholder: nil,
+                                     options: [.transition(.fade(0.5))],
+                                     progressBlock: nil)
+        descLabel.text = "\(item.name)"
+        favImageView.image = UIImage(resource: (item.favorite) ? .starBlue : .star)
     }
     
     private func updateUI() {
-        if let item = router?.dataStore?.item {
-            let localWorker = LocalWorker(localStore: LocalStore())
-            let isFavorite = localWorker.isFavorite(item.id, name: item.name)
-            favImageView.image = UIImage(resource: (isFavorite) ? .starBlue : .star)
+        guard var item = router?.dataStore?.item else { return }
+        
+        let localWorker = LocalWorker(localStore: LocalStore())
+        let isFavorite = localWorker.isFavorite(item.id, name: item.name)
+        favImageView.image = UIImage(resource: (isFavorite) ? .starBlue : .star)
+        
+        item.favorite = isFavorite
+        if var dataStore = router?.dataStore {
+            dataStore.item = item
         }
     }
     
@@ -87,12 +80,11 @@ class DetailViewController: BaseViewController, DetailDisplayLogic {
     }
     
     @IBAction func onFavorite(_ sender: Any) {
-        if let item = router?.dataStore?.item {
-            if item.favorite {
-                interactor?.removeFavorite(request: .init(id: item.id, name: item.name))
-            } else {
-                interactor?.addFavorite(request: .init(id: item.id, name: item.name, profileUrl: item.profileUrl))
-            }
+        guard let item = router?.dataStore?.item else { return }
+        if item.favorite {
+            interactor?.removeFavorite(request: .init(id: item.id, name: item.name))
+        } else {
+            interactor?.addFavorite(request: .init(id: item.id, name: item.name, profileUrl: item.profileUrl))
         }
     }
     

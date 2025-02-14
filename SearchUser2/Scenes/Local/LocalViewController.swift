@@ -21,7 +21,7 @@ class LocalViewController: BaseViewController, LocalDisplayLogic {
     
     var interactor: LocalBusinessLogic?
     var router: LocalRoutingLogic?
-    private var datas: [Local.FetchName.ViewModel.LocalGroupViewData] = []
+    var datas: [Local.FetchName.ViewModel.LocalGroupViewData] = []
     private let disposeBag = DisposeBag()
     
     @IBOutlet weak var searchBar: UISearchBar!  // 검색어 입력
@@ -146,7 +146,7 @@ extension LocalViewController: UITableViewDelegate, UITableViewDataSource, UserC
     }
     
     func didTapItem(section: Int, index: Int) {
-        
+        router?.routeToDetail(section: section, index: index)
     }
 }
 

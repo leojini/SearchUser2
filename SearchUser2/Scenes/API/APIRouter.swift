@@ -8,7 +8,7 @@
 import UIKit
 
 protocol APIRoutingLogic {
-    func routeToDetail(row: Int)
+    func routeToDetail(index: Int)
 }
 
 protocol APIDataPassing {
@@ -19,24 +19,25 @@ class APIRouter: APIRoutingLogic, APIDataPassing {
     weak var viewController: APIViewController?
     var dataStore: APIDataStore?
     
-    func routeToDetail(row: Int) {
+    func routeToDetail(index: Int) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         
         guard let detailVC: DetailViewController = storyboard.instantiateViewController(identifier: "DetailViewController") as? DetailViewController else {
             return
         }
         
-        if let sourceDS = dataStore, var destinationDS = detailVC.router?.dataStore {
-            passDataToDetail(destination: &destinationDS, row: row)
+        if var destinationDS = detailVC.router?.dataStore {
+            passDataToDetail(destination: &destinationDS, index: index)
             if let viewController = viewController {
                 presentToDetail(source: viewController, destination: detailVC)
             }
         }
     }
     
-    func passDataToDetail(destination: inout DetailDataStore, row: Int) {
-        destination.item = viewController?.datas[row]
-        
+    func passDataToDetail(destination: inout DetailDataStore, index: Int) {
+        if let item = viewController?.datas[index] {
+            destination.item = .init(id: item.id, name: item.name, profileUrl: item.profileUrl, favorite: item.favorite)
+        }
     }
     
     func presentToDetail(source: APIViewController, destination: DetailViewController) {

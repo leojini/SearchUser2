@@ -11,14 +11,6 @@ struct SearchUserResponse: Decodable {
     let total_count: Int // 전체 개수. (e.g. 1495406)
     let incomplete_results: Bool // 결과 완료 유무, (e.g. false)
     var items: [SearchUserItemResponse]
-    
-    func getTotalCount() -> Int {
-        return total_count
-    }
-    
-    func getItems() -> [SearchUserItemResponse] {
-        return items
-    }
 }
 
 /// 사용자 검색 응답 아이템 모델
@@ -27,8 +19,4 @@ struct SearchUserItemResponse: Decodable {
     let login: String // "A",
     let id: Int // 1410106,
     let avatar_url: String // "https://avatars.githubusercontent.com/u/1410106?v=4",
-    
-    func getData() -> (id: String, name: String, avatarUrl: String) {
-        return (id: "\(id)", name: login, avatarUrl: avatar_url)
-    }
 }

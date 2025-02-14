@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "DetailViewController.updateUI():DetailViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "router?.dataStore?.item">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "LocalStore.removeLocalData(_:name:):LocalStore.swift">
+      </ContextState>
+      <ContextState
+         contextName = "DetailInteractor.removeFavorite(request:):DetailInteractor.swift">
+      </ContextState>
+      <ContextState
+         contextName = "DetailViewController.onFavorite(_:):DetailViewController.swift">
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>

@@ -117,7 +117,7 @@ class APIViewController: BaseViewController, APIDisplayLogic {
             removeDatas()
         } else {
             page = 1
-            interactor?.fetchUsers(request: API.FetchUsers.Request(searchRequest: .init(name: name, page: page)))
+            try? interactor?.fetchUsers(request: API.FetchUsers.Request(searchRequest: .init(name: name, page: page)))
         }
     }
     
@@ -160,7 +160,7 @@ extension APIViewController: UITableViewDelegate, UITableViewDataSource, UserCel
             if let interactor = interactor, !interactor.isFetching {
                 // 다음 페이지 데이터를 요청한다.
                 page += 1
-                interactor.fetchUsers(request: API.FetchUsers.Request(searchRequest: .init(name: searchBar.text ?? "", page: page)))
+                try? interactor.fetchUsers(request: API.FetchUsers.Request(searchRequest: .init(name: searchBar.text ?? "", page: page)))
             }
         }
     }
@@ -177,7 +177,7 @@ extension APIViewController: UITableViewDelegate, UITableViewDataSource, UserCel
     }
     
     func didTapItem(section: Int, index: Int) {
-        router?.routeToDetail(row: index)
+        router?.routeToDetail(index: index)
     }
     
     func displayAddFavorite(viewModel: API.AddFavorite.ViewModel) {
