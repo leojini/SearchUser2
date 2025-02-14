@@ -22,7 +22,7 @@ class APIViewController: BaseViewController, APIDisplayLogic {
     
     var interactor: APIBusinessLogic?
     var router: APIRoutingLogic?
-    var datas: [API.FetchUsers.ViewModel.APIViewData] = []
+    private var datas: [API.FetchUsers.ViewModel.APIViewData] = []
     private let disposeBag = DisposeBag()
     private var page: Int = 1
     
@@ -49,7 +49,7 @@ class APIViewController: BaseViewController, APIDisplayLogic {
         interactor.presenter = presenter
         presenter.viewController = viewController
         router.viewController = viewController
-        router.dataStore = interactor
+        router.dataStore = presenter
     }
     
     /// 최초 로드시 UI를 초기화한다.

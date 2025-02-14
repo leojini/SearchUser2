@@ -12,12 +12,12 @@ protocol APIRoutingLogic {
 }
 
 protocol APIDataPassing {
-    var dataStore: APIDataStore? { get }
+    var dataStore: APIPresenterData? { get }
 }
 
 class APIRouter: APIRoutingLogic, APIDataPassing {
     weak var viewController: APIViewController?
-    var dataStore: APIDataStore?
+    var dataStore: APIPresenterData?
     
     func routeToDetail(index: Int) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -35,7 +35,7 @@ class APIRouter: APIRoutingLogic, APIDataPassing {
     }
     
     func passDataToDetail(destination: inout DetailDataStore, index: Int) {
-        if let item = viewController?.datas[index] {
+        if let item = dataStore?.datas[index] {
             destination.item = .init(id: item.id, name: item.name, profileUrl: item.profileUrl, favorite: item.favorite)
         }
     }

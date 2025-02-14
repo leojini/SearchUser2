@@ -21,7 +21,7 @@ class LocalViewController: BaseViewController, LocalDisplayLogic {
     
     var interactor: LocalBusinessLogic?
     var router: LocalRoutingLogic?
-    var datas: [Local.FetchName.ViewModel.LocalGroupViewData] = []
+    private var datas: [Local.FetchName.ViewModel.LocalGroupViewData] = []
     private let disposeBag = DisposeBag()
     
     @IBOutlet weak var searchBar: UISearchBar!  // 검색어 입력
@@ -45,7 +45,7 @@ class LocalViewController: BaseViewController, LocalDisplayLogic {
         interactor.presenter = presenter
         presenter.viewController = viewController
         router.viewController = viewController
-        router.dataStore = interactor
+        router.dataStore = presenter
     }
     
     /// 최초 로드시 UI를 초기화한다.

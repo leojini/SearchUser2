@@ -11,9 +11,13 @@ protocol LocalRoutingLogic {
     func routeToDetail(section: Int, index: Int)
 }
 
+protocol LocalDataPassing {
+    var dataStore: LocalPresenterData { get }
+}
+
 class LocalRouter: LocalRoutingLogic {
     weak var viewController: LocalViewController?
-    var dataStore: LocalDataStore?
+    var dataStore: LocalPresenterData?
     
     func routeToDetail(section: Int, index: Int) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -31,7 +35,7 @@ class LocalRouter: LocalRoutingLogic {
     }
     
     func passDataToDetail(destination: inout DetailDataStore, section: Int, index: Int) {
-        if let item = viewController?.datas[section].items[index] {
+        if let item = dataStore?.datas[section].items[index] {
             destination.item = .init(id: item.id, name: item.name, profileUrl: item.profileUrl, favorite: true)
         }
     }
